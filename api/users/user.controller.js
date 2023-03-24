@@ -140,5 +140,33 @@ module.exports = {
         success: 1
       });
     });
+  },
+  fromexcelcreate: (req, res) => {
+      const file = reader.readFile('../students.xlsx')
+      let data = []
+      const sheets = file.SheetNames
+      for (let i = 0; i < sheets.length; i++) {
+        const temp = reader.utils.sheet_to_json(
+          file.Sheets[file.SheetNames[i]])
+        temp.forEach((res) => {
+          data.push(res)
+        })
+      }
+      for (let index = 0; index < data.length; index++) {
+        create(data[index], (err, NULL) => {
+          if (err) {
+            console.log(err);
+            return res.status(500).json({
+              success: 0,
+              message: "Database connection errror"+index
+              
+            });
+          }
+        });
+      }
+      return res.json({
+        success: 1
+      });
+    
   }
 };
