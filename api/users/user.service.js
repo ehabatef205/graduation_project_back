@@ -98,7 +98,6 @@ module.exports = {
     );
   },
   deleteUser: (data, callBack) => {
-    console.log(data.id)
     pool.query(
       `delete from users where user_id = ?`,
       [data.id],
