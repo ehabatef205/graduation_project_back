@@ -1,4 +1,3 @@
-const reader = require('xlsx')
 const {
   create,
   getUserByUserEmail,
@@ -123,21 +122,6 @@ module.exports = {
       return res.json({
         success: 1,
         message: "user deleted successfully"
-      });
-    });
-  },
-  excelcreate: (req, res) => {
-    getUsers((err, results) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      const file = reader.readFile('../exported.xlsx')
-      const ws = reader.utils.json_to_sheet(results)
-      reader.utils.book_append_sheet(file, ws, "sheet2")
-      reader.writeFile(file, './test.xlsx')
-      return res.json({
-        success: 1
       });
     });
   }
