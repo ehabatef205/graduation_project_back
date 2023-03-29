@@ -7,8 +7,7 @@ const {
   getUsers,
   updateUsers,
   deleteUser,
-  excelcreate,
-  fromexcelcreate
+  excelcreate
 } = require("./user.controller");
 router.get("/", checkToken, getUsers);
 router.post("/", checkToken, createUser);
@@ -16,7 +15,6 @@ router.get("/:id", checkToken, getUserByUserId);
 router.post("/login", login);
 router.patch("/", checkToken, updateUsers);
 router.delete("/", checkToken, deleteUser);
-router.post("/excelcreate",checkToken,excelcreate)
-router.post("/fromexcelcreate",checkToken,fromexcelcreate)
+router.post("/excelCreate",checkToken,excelcreate)
 
 module.exports = router;
