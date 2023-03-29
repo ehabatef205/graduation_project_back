@@ -3,7 +3,7 @@ const app = express();
 
 app.get("/api", (req, res) => {
     res.json({
-        success: 1,
+        success: 2,
         message: "This is rest apis working"
     })
 });
